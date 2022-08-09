@@ -13,10 +13,14 @@
 * 固定費を減らしたいと思っている人
 
 ### 主な利用シーン
-* 支出の見える化をしたい
+* 支出の見える化をしたい時
 
 ## 設計書
 <...>
+
+## 実装機能リストのURL
+[リンク](https://docs.google.com/spreadsheets/d/1XTTKADjgKAAAGu6gYaXiATj-FWWQPCyYTWYYwvkeHOk/edit?usp=sharing)
+
 
 ## 開発環境
 - OS：Linux(CentOS)
