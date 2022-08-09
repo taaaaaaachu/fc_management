@@ -19,7 +19,7 @@
 <...>
 
 ## 実装機能リストのURL
-[リンク](https://docs.google.com/spreadsheets/d/1XTTKADjgKAAAGu6gYaXiATj-FWWQPCyYTWYYwvkeHOk/edit?usp=sharing)
+[https://docs.google.com/spreadsheets/d/1XTTKADjgKAAAGu6gYaXiATj-FWWQPCyYTWYYwvkeHOk/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1XTTKADjgKAAAGu6gYaXiATj-FWWQPCyYTWYYwvkeHOk/edit?usp=sharing)
 
 
 ## 開発環境
