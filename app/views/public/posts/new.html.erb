@@ -1,0 +1,24 @@
+<div class="post-post">
+  <%= form_with(model: @post, local: true) do |f| %>
+
+    <div class="post_details">
+      <div class="mx-auto">
+        <%= f.fields_for :post_details do |t| %>
+          <%= render "post_detail_fields", f: t %>
+        <% end %>
+      </div>
+
+      <div id="detail-association-insertion-point"></div>
+
+      <div class="col-10 mx-auto mt-2">
+        <%= link_to_add_association "+フォームを追加", f, :post_details,
+        class: "btn btn-secondary btn-block",
+        data: {
+          association_insertion_node: '#detail-association-insertion-point',
+          association_insertion_method: 'after'
+        }%>
+      </div>
+    </div>
+
+  <% end %>
+</div>

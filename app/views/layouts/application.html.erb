@@ -11,6 +11,23 @@
   </head>
 
   <body>
+    <header>
+      <%= link_to "ユーザーログイン", new_user_session_path %>
+      <%= link_to "アドミンログイン", new_admin_session_path %>
+      <%= link_to "サインアップ", new_user_registration_path %>
+      <%= link_to "ユーザーログアウト", destroy_user_session_path, method: :delete %>
+      <%= link_to "アドミンログアウト", destroy_admin_session_path, method: :delete %>
+      <% if user_signed_in? %>
+      ユーザーログイン済み
+      <% elsif admin_signed_in? %>
+      アドミンログイン済み
+      <% else %>
+      未ログイン
+      <% end %>
+    </header>
     <%= yield %>
+    <footer>
+      フッター
+    </footer>
   </body>
 </html>
