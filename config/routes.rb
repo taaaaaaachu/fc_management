@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
   root to: 'homes#top'
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   resources :post_details
   end
 

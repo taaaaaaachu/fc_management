@@ -33,6 +33,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_details = @post.post_details
+    @comment = Comment.new
   end
 
   def index
