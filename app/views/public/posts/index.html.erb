@@ -1,4 +1,17 @@
 <h1>Public::Posts#index</h1>
 <p>Find me in app/views/public/posts/index.html.erb</p>
 
-  
+<%= link_to "新規投稿", new_post_path %>
+<br><br><br><br>
+<% @posts.each do |post| %>
+  <%= post.user_id %><br>
+  <% post.post_details.each do |post_detail| %>
+    <%= post_detail.title %><br>
+    <%= post_detail.price %><br>
+  <% end %>
+
+  <%= link_to "詳細", post_path(post) %>
+
+  <br><br>
+<% end %>
+<br><br><br><br>

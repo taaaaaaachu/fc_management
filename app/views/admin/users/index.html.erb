@@ -1,0 +1,6 @@
+<% @users.each do |user| %>
+  <%= user.nickname %><br>
+  <%= user.email %><br>
+  <%= user.is_active%><br>
+  <%= link_to "ユーザ編集", edit_admin_user_path(user) %><br><br>
+<% end %>

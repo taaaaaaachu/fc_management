@@ -1,0 +1,12 @@
+<%= form_with model: @user, url: admin_user_path do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %><br>
+  <%= f.label :nickname %>
+  <%= f.text_field :nickname %><br>
+  <%= f.label :is_active %>
+  <%= f.check_box :is_active %><br>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "ユーザー削除", admin_user_path(@user), method: :delete, data: { confirm: "本当に削除してよろしいですか？" } %><br>
+<%= link_to "戻る", admin_users_path %>

@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resources :post_details
   end
 
+  namespace :admin do
+    resources :users, only: [:index, :edit, :update, :destroy]
+  end
+
   # 顧客用
   # URL /users/sign_in ...
   devise_for :users,skip: [:passwords], controllers: {
