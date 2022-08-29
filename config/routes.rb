@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   resources :posts do
     resources :comments
+    resource :likes, only: [:create, :destroy]
   end
   resources :post_details
   end

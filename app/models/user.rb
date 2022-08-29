@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :authentication_keys => [:email]
 
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 end

@@ -6,9 +6,19 @@
   <%= post_detail.price %><br>
   <br>
 <% end %>
-<% if !current_user.nil? && @post.user_id == current_user.id %>
+<% if user_signed_in? && @post.user_id == current_user.id %>
 <%= link_to "編集", edit_post_path(@post) %>
 <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+<br>
+<% if @post.liked_by?(current_user) %>
+  <%= link_to post_likes_path(@post), method: :delete do %>
+     ♥<%= @post.likes.count %> いいね
+  <% end %>
+<% else %>
+  <%= link_to post_likes_path(@post), method: :post do %>
+    ♡<%= @post.likes.count %> いいね
+  <% end %>
 <% end %>
 <br>
 <%= form_with model: [@post,@comment] do |f| %>
@@ -20,6 +30,10 @@
 <% @post.comments.each do |comment| %>
   <%= comment.user.nickname %><br>
   <%= comment.comment %><br>
+  <% if user_signed_in? && comment.user_id == current_user.id %>
+    <%= link_to "編集", edit_post_comment_path(comment) %>
+    <%= link_to "削除", post_comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
   <br>
 <% end %>
 <br><br>
