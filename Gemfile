@@ -62,3 +62,5 @@ gem "net-smtp"
 gem 'cocoon'
 
 gem 'pry-rails'
+
+gem 'ransack'
