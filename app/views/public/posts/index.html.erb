@@ -14,4 +14,12 @@
 
   <br><br>
 <% end %>
+
+<h1>検索</h1>
+<%= search_form_for @q, url: search_posts_path do |f| %>
+  <%= f.label :user_id_cont, 'ユーザー名' %>
+  <%= f.search_field :post_details_title_or_post_details_price_cont %>
+  <br>
+  <%= f.submit '検索' %>
+<% end %>
 <br><br><br><br>

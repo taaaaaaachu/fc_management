@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   scope module: :public do
   root to: 'homes#top'
   resources :posts do
+    collection do
+      get 'search'
+    end
     resources :comments
     resource :likes, only: [:create, :destroy]
   end

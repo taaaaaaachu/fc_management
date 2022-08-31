@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :set_q, only: [:index, :search]
+  
   def new
     @post = Post.new
     @post_details = @post.post_details.build
@@ -40,8 +42,17 @@ class Public::PostsController < ApplicationController
     @posts = Post.all
     @post_details = PostDetail.all
   end
+  
+  def search
+    @results = @q.result
+  end
 
+  
   private
+  
+    def set_q
+    @q = Post.ransack(params[:q])
+    end
 
     def post_params
       params.require(:post).permit(:user_id, :is_public,
