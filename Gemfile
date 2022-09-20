@@ -64,3 +64,5 @@ gem 'cocoon'
 gem 'pry-rails'
 
 gem 'ransack'
+
+gem 'gon'

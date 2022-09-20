@@ -1,24 +1,50 @@
-<br><br>
-<hr>
-<% @post_details.each do |post_detail| %>
-  <%= post_detail.title %><Br>
-  <%= post_detail.price %><br>
-<br>
-<% end %>
+<div class="card mx-auto width80 mb-5 mt-5">
+  <div class="card-header">
+    <%= @post.user.nickname %>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ジャンル</th>
+          <th scope="col">名目</th>
+          <th scope="col">値段</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @post_details.each do |post_detail| %>
+        <tr>
+          <td>
+            <% if post_detail.genre_id.nil? %>
+              <%= post_detail.custom_genre %>
+            <% else %>
+              <%= post_detail.genre.name %>
+            <% end %>
+          </td>
+          <td><%= post_detail.title %></td>
+          <td><%= post_detail.price %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <canvas id="myPieChart" width="400" height="400"></canvas>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+  </div>
+</div>
 <% if user_signed_in? && @post.user_id == current_user.id %>
-  <%= link_to "編集", edit_post_path(@post) %>
-  <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to "編集", edit_post_path(@post), class: "btn btn-success text-light" %>
+  <%= link_to "削除", post_path(@post), class: "btn btn-danger text-light", method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 <br>
 <hr>
 <% if user_signed_in? %>
   <% if @post.liked_by?(current_user) %>
     <%= link_to post_likes_path(@post), method: :delete do %>
-       ♥<%= @post.likes.count %> いいね
+       <div class="btn btn-danger">♥<%= @post.likes.count %> いいね解除</div>
     <% end %>
   <% else %>
     <%= link_to post_likes_path(@post), method: :post do %>
-      ♡<%= @post.likes.count %> いいね
+      <div class="btn btn-primary">♡<%= @post.likes.count %> いいねする</div>
     <% end %>
   <% end %>
 <% end %>
@@ -27,7 +53,7 @@
 <%= form_with model: [@post,@comment] do |f| %>
   <%= f.label :comment %><br>
   <%= f.text_area :comment %><br>
-  <%= f.submit "投稿" %>
+  <%= f.submit "投稿", class: "btn btn-secondary" %>
 <% end %>
 <br>
 <hr>
@@ -35,11 +61,11 @@
   <%= comment.user.nickname %><br>
   <%= comment.comment %><br>
   <% if user_signed_in? && comment.user_id == current_user.id %>
-    <%= link_to "編集", edit_post_comment_path(comment) %>
-    <%= link_to "削除", post_comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to "編集", edit_post_comment_path(comment), class: "btn btn-success text-light" %>
+    <%= link_to "削除", post_comment_path(comment), class: "btn btn-danger text-light", method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 <br>
 <hr>
 <% end %>
 <br><br>
-<%= link_to "戻る", posts_path %>
+<%= link_to "戻る", posts_path, class: "btn btn-primary text-light" %>

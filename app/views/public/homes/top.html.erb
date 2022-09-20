@@ -1,6 +1,19 @@
-This is Top page
-<br>
-<%= link_to "新規投稿", new_post_path %>
-<br>
-<%= link_to "投稿", posts_path %>
-<br>
+<div class="row">
+  <div class="col-12">
+    <div style="height: 25vh;"></div>
+    <h1 class="text-center">固定費チェッカー</h1>
+    <h2 class="text-center">あなたの日々の生活の固定費を可視化します</h2>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <% if user_signed_in? %>
+    <%= link_to "早速始める", new_post_path, class: "btn btn-success text-light btn-lg text-center mt-3" %>
+  <% else %>
+    <%= link_to "会員登録して始める", new_user_registration_path, class: "btn btn-warning text-light btn-lg text-center mt-3" %>
+  <% end %>
+</div>
+<div class="row justify-content-center">
+    <%= link_to "投稿一覧", posts_path, class: "btn btn-success text-light btn-lg text-center mt-3 mr-2" %>
+    <%= link_to "ランキング", ranking_posts_path, class: "btn btn-success text-light btn-lg text-center mt-3 ml-2" %>
+</div>

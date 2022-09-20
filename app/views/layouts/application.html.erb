@@ -6,28 +6,44 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= include_gon %>
+    <script src="https://kit.fontawesome.com/30f9642506.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
-      <%= link_to "ユーザーログイン", new_user_session_path %>
-      <%= link_to "アドミンログイン", new_admin_session_path %>
-      <%= link_to "サインアップ", new_user_registration_path %>
-      <%= link_to "ユーザーログアウト", destroy_user_session_path, method: :delete %>
-      <%= link_to "アドミンログアウト", destroy_admin_session_path, method: :delete %>
-      <% if user_signed_in? %>
-      ユーザーログイン済み
-      <% elsif admin_signed_in? %>
-      アドミンログイン済み
-      <% else %>
-      未ログイン
-      <% end %>
-    </header>
-    <%= yield %>
+    <nav class="navbar navbar-expand-xl navbar-light fixed-top" style="background-color: #e3f2fd;">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <%= link_to root_path, class: "nohover navbar-brand" do %>
+            <%= image_tag 'logo.png', :size => '172x50' %>
+          <% end %>
+        </ul>
+        <% if user_signed_in? %>
+          <ul class="navbar-nav ml-auto">
+            <%= link_to my_page_path, class: "nohover" do %>
+              <i class="fa-solid fa-user fa-3x mr-3"></i>
+            <% end %>
+            <%= link_to "投稿する", new_post_path, class: "btn btn-light text-warning font-weight-bold mr-2" %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-warning text-light font-weight-bold" %>
+          </ul>
+        <% else %>
+          <ul class="navbar-nav ml-auto">
+            <%= link_to "サインアップ", new_user_registration_path, class: "btn btn-warning text-light font-weight-bold mr-2" %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-light text-warning font-weight-bold" %>
+          </ul>
+        <% end %>
+      </div>
+    </nav>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
     <footer>
-      フッター
+
     </footer>
   </body>
 </html>

@@ -1,0 +1,67 @@
+<div class="card mt-5 mb-5 width80 mx-auto">
+  <div class="card-header">
+    <h4>アカウント情報</h4>
+  </div>
+  <div class="card-body">
+    <h5>メールアドレス</h5>
+    <h6><%= @user.email %></h6>
+    <h5 class="mt-4">ニックネーム</h5>
+    <h6><%= @user.nickname %></h6>
+  </div>
+  <div class="card-footer">
+    <%= link_to "アカウント情報編集", edit_user_registration_path, class: "btn btn-primary text-light" %>
+  </div>
+</div>
+
+<div class="col-12">
+  <% if @posts.blank? %>
+    <h2 class="text-center">まだ投稿がありません</h2>
+  <% else %>
+    <h2 class="text-center">あなたの投稿一覧</h2>
+    <%= render partial: 'public/shared/post', locals: { posts: @posts } %>
+  <% end %>
+</div>
+
+<div class="col-12">
+  <% if @liked_posts.blank? %>
+    <h2 class="text-center">いいねした投稿はありません</h2>
+  <% else %>
+    <h2 class="text-center">いいねした投稿</h2>
+    <% @liked_posts.each do |post| %>
+      <div class="card mx-auto width80 mb-5">
+        <div class="card-header">
+          <%= post.user.nickname %>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">ジャンル</th>
+                <th scope="col">名目</th>
+                <th scope="col">値段</th>
+              </tr>
+            </thead>
+            <tbody>
+          <% post.post.post_details.each do |post_detail| %>
+              <tr>
+                <% if post_detail.genre_id.nil? %>
+                  <td><%= post_detail.custom_genre %></td>
+                <% else %>
+                  <td><%= post_detail.genre.name %></td>
+                <% end %>
+                <td><%= post_detail.title %></td>
+                <td><%= post_detail.price %></td>
+              </tr>
+          <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card-footer">
+          <%= link_to "詳細", post_path(post), class: "btn btn-success text-light" %>
+        </div>
+
+      </div>
+    <% end %>
+  <% end %>
+</div>

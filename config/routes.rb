@@ -1,19 +1,34 @@
 Rails.application.routes.draw do
 
   scope module: :public do
-  root to: 'homes#top'
-  resources :posts do
-    collection do
-      get 'search'
+    root to: 'homes#top'
+    get 'my_page', to: 'users#show'
+
+    resource :user, only: [:edit, :update] do
+      collection do
+        get 'unsubscribe'
+        patch 'withdraw'
+      end
     end
-    resources :comments
-    resource :likes, only: [:create, :destroy]
-  end
-  resources :post_details
+
+    resources :posts do
+      collection do
+        get 'search'
+        get 'ranking'
+      end
+      resources :comments
+      resource :likes, only: [:create, :destroy]
+    end
+
+    resources :post_details
   end
 
+
   namespace :admin do
+
     resources :users, only: [:index, :edit, :update, :destroy]
+    resources :genres
+
   end
 
   # 顧客用
