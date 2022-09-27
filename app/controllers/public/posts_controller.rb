@@ -1,6 +1,8 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index, :ranking]
+  before_action :ensure_user, only: [:edit, :update, :destroy]
   before_action :set_q, only: [:index, :search]
+
 
   def new
     @post = Post.new
@@ -48,7 +50,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(5)
     @post_details = PostDetail.all
   end
 
@@ -61,6 +63,12 @@ class Public::PostsController < ApplicationController
 
 
   private
+
+    def ensure_user
+    @posts = current_user.posts
+    @post = @posts.find_by(id: params[:id])
+    redirect_to posts_path unless @post
+    end
 
     def set_q
     @q = Post.ransack(params[:q])

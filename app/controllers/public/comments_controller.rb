@@ -14,6 +14,9 @@ class Public::CommentsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @comment = Comment.find(params[:post_id])
+    unless @comment.user == current_user
+      redirect_to post_path(@post)
+    end
   end
 
   def update

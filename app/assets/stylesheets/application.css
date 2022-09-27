@@ -49,3 +49,7 @@
 .body-color {
   background-color: #edebe8;
 }
+
+.pagination {
+  justify-content: center;
+}

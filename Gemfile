@@ -66,3 +66,5 @@ gem 'pry-rails'
 gem 'ransack'
 
 gem 'gon'
+
+gem 'kaminari'
