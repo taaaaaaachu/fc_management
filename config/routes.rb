@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'my_page', to: 'users#show'
+    post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 
     resource :user, only: [:edit, :update] do
       collection do

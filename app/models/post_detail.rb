@@ -1,5 +1,7 @@
 class PostDetail < ApplicationRecord
   validate :required_either_genre_or_custom_genre
+  validates :title, presence: true
+  validates :price, presence: true
 
   belongs_to  :post
   belongs_to  :genre, optional: true

@@ -14,7 +14,7 @@ class Public::PostsController < ApplicationController
     @post.user_id = current_user.id
     # binding.pry
     if @post.save
-      redirect_to posts_path
+      redirect_to post_path(@post)
     else
       render :new
     end

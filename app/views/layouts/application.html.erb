@@ -32,13 +32,15 @@
         <% else %>
           <ul class="navbar-nav ml-auto">
             <%= link_to "サインアップ", new_user_registration_path, class: "btn btn-warning text-light font-weight-bold mr-2" %>
-            <%= link_to "ログイン", new_user_session_path, class: "btn btn-light text-warning font-weight-bold" %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn btn-light text-warning font-weight-bold mr-2" %>
+            <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post, class: "btn btn-light text-warning font-weight-bold" %>
           </ul>
         <% end %>
       </div>
     </nav>
 
     <div class="container">
+      <%= render partial: 'layouts/flash' %>
       <%= yield %>
     </div>
 
