@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="vh d-flex align-items-center justify-content-center">
+    <div class="card width50">
+      <div class="card-body mb-5">
+        <h5 class="card-title mt-5 mb-5 ml-5">ログイン</h5>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+          <div class="row mb-4">
+            <div class="col-xl-2"></div>
+            <div class="field col-xl-8 mb-4 col-sm-12">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
+            </div>
+            <div class="col-xl-2"></div>
+          </div>
+
+          <div class="row">
+            <div class="col-xl-2"></div>
+            <div class="field col-xl-8 mb-4 col-sm-12">
+              <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "form-control" %>
+            </div>
+            <div class="col-xl-2"></div>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="field ml-5">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+
+          <div class="actions ml-5">
+            <%= f.submit "Log in", class: "btn btn-primary float-right" %>
+          </div>
+        <% end %>
+
+        <%= render "public/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

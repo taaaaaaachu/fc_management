@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="vh d-flex align-items-center justify-content-center">
+    <div class="card">
+      <div class="card-body mb-5">
+        <h5 class="card-title mt-5 mb-5">アカウント編集</h5>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "public/shared/error_messages", resource: resource %>
+
+          <div class="row">
+            <div class="field col-xl-12 mb-4 col-sm-12">
+              <%= f.text_field :nickname, autofocus: true, placeholder: "ニックネーム(表示名)", class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field col-xl-12 mb-4 col-sm-12">
+              <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
+            </div>
+          </div>
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
+
+                <div class="field">
+                  <i>(変更したくない場合は空白のままにしてください)</i>
+                  <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード", class: "form-control" %>
+                  <% if @minimum_password_length %>
+                    <br />
+                    <em><%= @minimum_password_length %> 文字以上</em>
+                  <% end %>
+                </div>
+
+                <div class="field">
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード(確認)", class: "form-control" %>
+                </div>
+
+                <div class="field">
+                  <i>(変更を確認するには、現在のパスワードが必要です)</i><br />
+                  <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "現在のパスワード", class: "form-control" %>
+                </div>
+
+                <div class="actions">
+                  <%= f.submit "変更を保存", class: "btn btn-primary ml-5 float-right" %>
+                </div>
+              <% end %>
+
+
+              <p><%= link_to "退会する",  unsubscribe_user_path, class: "btn btn-danger text-light" %></p>
+
+              <%= link_to "戻る", :back, class: "btn btn-secondary text-light" %>
+      </div>
+    </div>
+  </div>
+</div>

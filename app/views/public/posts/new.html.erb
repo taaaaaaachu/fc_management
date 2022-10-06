@@ -1,0 +1,46 @@
+<div class="vh d-flex align-items-center justify-content-center">
+  <div class="card width100">
+    <div class="card-body mt-5 mb-5">
+      <h5 class="card-title mb-5">固定費入力</h5>
+      <% if @post.errors.any? %>
+        <div id="error_explanation">
+          <div class="alert alert-danger">
+            The form contains <%= pluralize(@post.errors.count, "error") %>.
+          </div>
+          <ul>
+          <% @post.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="post-post">
+        <%= form_with(model: @post, local: true) do |f| %>
+
+          <div class="post_details">
+            <div class="mx-auto">
+              <%= f.fields_for :post_details do |t| %>
+                <%= render "post_detail_fields", f: t %>
+              <% end %>
+            </div>
+
+            <div id="detail-association-insertion-point"></div>
+
+            <div class="col-10 mx-auto mt-2 d-flex align-items-center justify-content-center">
+              <%= link_to_add_association "+フォームを追加", f, :post_details,
+              class: "btn btn-secondary text-light",
+              data: {
+                association_insertion_node: '#detail-association-insertion-point',
+                association_insertion_method: 'after'
+              }%>
+            </div>
+          </div>
+          <%= f.submit "投稿", class: "btn btn-primary ml-5 float-right" %>
+        <% end %>
+
+        <%= link_to "一覧", posts_path, class: "btn btn-outline-secondary btn-sm" %>
+      </div>
+    </div>
+  </div>
+</div>

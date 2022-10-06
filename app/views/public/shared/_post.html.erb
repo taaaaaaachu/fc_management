@@ -1,0 +1,37 @@
+<% posts.each do |post| %>
+  <div class="card mx-auto width80 mb-5">
+    <div class="card-header">
+      ユーザー名 <h4><%= post.user.nickname %></h4>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ジャンル</th>
+            <th scope="col">名目</th>
+            <th scope="col">値段</th>
+          </tr>
+        </thead>
+        <tbody>
+      <% post.post_details.each do |post_detail| %>
+          <tr>
+            <% if post_detail.genre_id.nil? %>
+              <td><%= post_detail.custom_genre %></td>
+            <% else %>
+              <td><%= post_detail.genre.name %></td>
+            <% end %>
+            <td><%= post_detail.title %></td>
+            <td><%= post_detail.price %></td>
+          </tr>
+      <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card-footer">
+      <%= link_to "詳細", post_path(post), class: "btn btn-success text-light" %>
+    </div>
+
+  </div>
+<% end %>
+

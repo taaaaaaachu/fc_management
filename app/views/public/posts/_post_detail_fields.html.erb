@@ -1,0 +1,9 @@
+<div class="nested-fields">
+  <div class="row mx-2 d-flex align-items-center justify-content-center mt-3">
+    <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい", class: "col-2" %>
+    <%= f.text_field :custom_genre, class: "form-control col-2 ml-2", placeholder: "カスタムジャンル" %>
+    <%= f.text_field :title, class: "form-control col-2 ml-2", placeholder: "タイトル" %>
+    <%= f.text_field :price, class: "form-control col-2 ml-2", placeholder: "値段" %>
+    <%= link_to_remove_association "削除", f, class: "btn btn-danger ml-2 text-light col-2" %>
+  </div>
+</div>
