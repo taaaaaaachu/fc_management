@@ -1,8 +1,14 @@
-$(document).on('turbolinks:load', function() {
-  var post_details = gon.post_details;
+	$(document).on('turbolinks:load', function() {
+		var ctx = document.getElementById("myPieChart");
+		if (ctx == null){
+			return;
+		}
+		var post_details = gon.post_details;
+		var myPieChart = new Chart(ctx, {
 
-  var ctx = document.getElementById("myPieChart");
-  var myPieChart = new Chart(ctx, {
+
+
+
     type: 'pie',
     data: {
       labels: gon.graph_post_title,
