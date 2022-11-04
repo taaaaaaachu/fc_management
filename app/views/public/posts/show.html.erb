@@ -28,7 +28,7 @@
       </tbody>
     </table>
     <canvas id="myPieChart" width="400" height="400"></canvas>
-      
+
   </div>
 </div>
 <% if user_signed_in? && @post.user_id == current_user.id %>
@@ -59,6 +59,7 @@
 <hr>
 <% @post.comments.each do |comment| %>
   <%= comment.user.nickname %><br>
+  <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %><br>
   <%= comment.comment %><br>
   <% if user_signed_in? && comment.user_id == current_user.id %>
     <%= link_to "編集", edit_post_comment_path(comment), class: "btn btn-success text-light" %>
