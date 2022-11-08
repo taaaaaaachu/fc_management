@@ -25,8 +25,6 @@
 * 固定費を削減したい時
 * 節税や投資について知りたい時
 
-## 設計書
-<...>
 
 ## 実装機能リストのURL
 [https://docs.google.com/spreadsheets/d/1XTTKADjgKAAAGu6gYaXiATj-FWWQPCyYTWYYwvkeHOk/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1XTTKADjgKAAAGu6gYaXiATj-FWWQPCyYTWYYwvkeHOk/edit?usp=sharing)
@@ -38,6 +36,3 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-
-## 使用素材
-使用検討中です
