@@ -15,6 +15,8 @@ import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 import "graph.js"
 
+import "../stylesheets/application.scss"
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

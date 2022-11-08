@@ -1,2 +1,41 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.vh {
+  height: 90vh;
+}
+
+.width50 {
+  width: 50%;
+}
+
+.width80 {
+  width: 80%;
+}
+
+.width100 {
+  width: 100%;
+}
+
+.container{
+  margin-top: 92px;
+}
+
+.header {
+  background-color: #edebe8;
+  width: 100%;
+
+  padding: 21px 0;
+}
+
+.nohover:hover {
+  background-color: transparent;
+}
+
+.body-color {
+  background-color: #edebe8;
+}
+
+.pagination {
+  justify-content: center;
+}

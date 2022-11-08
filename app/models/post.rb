@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   end
 
   def post_details_present?
-    if !sepost_details.any?
+    if !post_details.any?
       errors.add(:base, "固定費が入力されていません")
     end
   end
