@@ -5,13 +5,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+if Rails.env.development?
+  admin = Admin.new(
+  
+    admin_id:               'Admin',
+    email:                  'admin@example.com',
+    password:               '123456',
+    password_confirmation:  '123456'
+  
+  )
+  admin.save!
+  
+  (1..10).each do |n|
+    User.create!( email: "test#{n}@test.com",
+                  password: "123456"
+                )
+  end
+end
 
-admin = Admin.new(
+genres = %w{
+  genre1
+  genre2
+}
 
-  admin_id:               'Admin',
-  email:                  'admin@example.com',
-  password:               '123456',
-  password_confirmation:  '123456'
-
-)
-admin.save!
+genres.each do |genre|
+  Genre.create!(name: genre)
+end
