@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+  <% if @post.liked_by?(current_user) %>
+    <%= link_to post_likes_path(post), method: :delete, remote: true do %>
+       <div class="btn btn-danger">♥<%= @post.likes.count %> いいね解除</div>
+    <% end %>
+  <% else %>
+    <%= link_to post_likes_path(post), method: :post, remote: true do %>
+      <div class="btn btn-primary">♡<%= @post.likes.count %> いいねする</div>
+    <% end %>
+  <% end %>
+<% end %>
