@@ -7,16 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 if Rails.env.development?
   admin = Admin.new(
-  
+
     admin_id:               'Admin',
     email:                  'admin@example.com',
     password:               '123456',
     password_confirmation:  '123456'
-  
+
   )
   admin.save!
-  
-  (1..10).each do |n|
+
+  (1..20).each do |n|
     User.create!( email: "test#{n}@test.com",
                   password: "123456"
                 )
